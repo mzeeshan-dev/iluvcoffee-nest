@@ -20,8 +20,11 @@ NEST JS Concepts
   - ParseBoolPipe
   - ParseArrayPipe
   - ParseUUIDPipe
-
-
+- Repository Pattern - TypeORM
+  - Acts as an  abstraction over the data source; a layer that sits between the application and the database.
+  - It exposes methods for performing CRUD operations without exposing the underlying database.
+  
+- Active Record Pattern - Sequelize (Modal Classes)
   
 
 Pipes have two typical use cases:
