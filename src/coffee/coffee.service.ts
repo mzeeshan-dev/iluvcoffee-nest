@@ -11,6 +11,7 @@ import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { Flavor } from './entities/flavor.entity';
 import { Event } from 'src/events/entities/event.entity';
+import { ConfigService } from '@nestjs/config';
 // import { COFFEE_BRANDS } from './coffee.constants';
 
 @Injectable({ scope: Scope.REQUEST })
@@ -22,9 +23,12 @@ export class CoffeeService {
     private readonly flavorRepository: Repository<Flavor>,
     private dataSource: DataSource,
     // @Inject(COFFEE_BRANDS) coffeeBrands: string[],
+    private readonly configService: ConfigService,
   ) {
     // console.warn(coffeeBrands);
-    console.log('CoffeeService Instantiated');
+    // console.log('CoffeeService Instantiated');
+    const databaseHost = this.configService.get('DATABASE_HOST', 'localhost'); // 👈 no type conversion will happen here, you have to do it manually. The string type mentioned here is just for the compiler.
+    console.log(databaseHost);
   }
 
   async findByQuery(paginationQueryDto) {

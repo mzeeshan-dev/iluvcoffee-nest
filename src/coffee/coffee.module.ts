@@ -10,6 +10,7 @@ import { Flavor } from './entities/flavor.entity';
 import { Event } from 'src/events/entities/event.entity';
 import { COFFEE_BRANDS } from './coffee.constants';
 import { DataSource } from 'typeorm';
+import { ConfigModule } from '@nestjs/config';
 
 // class ConfigService {}
 // class DevelopmentConfigService {}
@@ -23,7 +24,7 @@ import { DataSource } from 'typeorm';
 // }
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Coffee, Flavor, Event])], // 👈 Registering Repository in the current module
+  imports: [TypeOrmModule.forFeature([Coffee, Flavor, Event]), ConfigModule], // 👈 Registering Repository in the current module
   controllers: [CoffeeController],
   providers: [
     CoffeeService,
